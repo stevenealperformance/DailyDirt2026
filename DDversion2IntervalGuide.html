@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)file:///Users/steve_neal/Downloads/index_29.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interval Training Guide — Daily Dirt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./DDversion2IntervalGuide_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F0E6;
+    --surface: #FDFBF6;
+    --ink: #1A1816;
+    --ink-soft: #55504B;
+    --accent: #C2410C;
+    --accent-soft: rgba(194, 65, 12, 0.08);
+    --rule: #1A1816;
+    --border-soft: #DED7C8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Layout ---------- */
+  .container { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ---------- Header ---------- */
+  header {
+    border-bottom: 3px solid var(--rule);
+    padding: 3.5rem 0 2.5rem;
+    position: relative;
+  }
+  header::before {
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 6px; background: var(--accent);
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: 0.92; letter-spacing: 0.005em;
+    text-transform: uppercase;
+  }
+  header .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; margin-top: 1rem;
+    padding: 0.35rem 0.75rem;
+    border: 1.5px solid var(--ink);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  header .lede {
+    font-size: 1.05rem; color: var(--ink-soft);
+    max-width: 44rem; margin-top: 1.25rem;
+  }
+
+  /* ---------- Section ---------- */
+  section { padding: 4rem 0; border-bottom: 1px solid var(--border-soft); }
+  section:last-of-type { border-bottom: none; }
+  .section-head { margin-bottom: 2.5rem; }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: 0.95; letter-spacing: 0.005em;
+    text-transform: uppercase;
+  }
+
+  section p { max-width: 44rem; margin-bottom: 1rem; }
+  section ul { max-width: 44rem; padding-left: 1.25rem; margin-bottom: 1rem; }
+  section ul li { margin-bottom: 0.45rem; }
+  strong { font-weight: 700; }
+
+  /* ---------- Interval cards ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+    gap: 1.25rem; margin-top: 2rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 2px solid var(--rule);
+    padding: 1.5rem 1.5rem 1.75rem;
+    display: flex; flex-direction: column;
+    transition: transform 0.12s ease;
+  }
+  .card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--rule); }
+  .card .card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+  .card h3 {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: 1.75rem; line-height: 1;
+    letter-spacing: 0.005em; text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .card .duration {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem; color: var(--ink-soft);
+    margin-bottom: 1.1rem;
+    padding-bottom: 1.1rem;
+    border-bottom: 1px dashed var(--border-soft);
+  }
+  .card dl { display: grid; gap: 0.85rem; }
+  .card dl dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 0.15rem;
+  }
+  .card dl dd { font-size: 0.94rem; line-height: 1.55; }
+
+  /* ---------- Week table ---------- */
+  .week {
+    background: var(--surface);
+    border: 2px solid var(--rule);
+    margin-top: 2rem; overflow-x: auto;
+  }
+  .week table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .week th, .week td {
+    padding: 0.9rem 1rem; text-align: left;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .week th {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: 0.9rem; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--rule);
+    background: var(--bg);
+  }
+  .week tr.anchor td { background: var(--accent-soft); font-weight: 500; }
+  .week tr.anchor td.day { color: var(--accent); }
+  .week tr:last-child td { border-bottom: none; }
+  .week td.day { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+  .note {
+    font-size: 0.95rem; color: var(--ink-soft);
+    margin-top: 1.25rem; max-width: 44rem;
+  }
+
+  /* ---------- Menu cards ---------- */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.25rem; margin-top: 2rem;
+  }
+  .menu-card {
+    border: 2px solid var(--rule);
+    padding: 1.25rem 1.25rem 1.5rem;
+    background: var(--surface);
+    position: relative;
+  }
+  .menu-card::before {
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 100%; height: 4px; background: var(--accent);
+  }
+  .menu-card.fried::before { background: var(--ink); }
+  .menu-card .feel {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: 1.55rem; line-height: 1;
+    text-transform: uppercase; margin-top: 0.5rem; margin-bottom: 0.2rem;
+  }
+  .menu-card .feel-quote {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; color: var(--ink-soft);
+    margin-bottom: 1rem;
+  }
+  .menu-card ul { list-style: none; padding: 0; margin: 0; max-width: none; }
+  .menu-card ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border-soft);
+    font-size: 0.93rem; line-height: 1.45;
+  }
+  .menu-card ul li:last-child { border-bottom: none; }
+  .menu-card p { font-size: 0.93rem; margin: 0; max-width: none; }
+  .menu-card p + p { margin-top: 0.75rem; }
+  .menu-card .sos {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 0.55rem 0.75rem;
+    border: 2px solid var(--accent);
+    background: var(--accent-soft);
+    margin-bottom: 0.85rem;
+  }
+
+  /* ---------- Principles ---------- */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.25rem; margin-top: 2rem;
+  }
+  .principle {
+    border-left: 4px solid var(--accent);
+    padding: 0.5rem 0 0.5rem 1.1rem;
+  }
+  .principle-title {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: 1.25rem; line-height: 1;
+    letter-spacing: 0.01em; text-transform: uppercase;
+    display: block; margin-bottom: 0.4rem;
+  }
+  .principle p { margin: 0; font-size: 0.95rem; }
+
+  /* ---------- Workouts ---------- */
+  .zone-group { margin-bottom: 3rem; }
+  .zone-group:last-child { margin-bottom: 0; }
+  .zone-title {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    line-height: 1; text-transform: uppercase;
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 0.5rem; margin-bottom: 1.25rem;
+    letter-spacing: 0.01em;
+    display: flex; align-items: baseline;
+    justify-content: space-between; gap: 1rem;
+  }
+  .zone-title .zone-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; color: var(--accent);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500;
+  }
+  .workout {
+    background: var(--surface);
+    border: 2px solid var(--rule);
+    padding: 1.5rem; margin-bottom: 1.25rem;
+  }
+  .workout:last-child { margin-bottom: 0; }
+  .workout .workout-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    color: var(--accent); text-transform: uppercase;
+    font-weight: 500; margin-bottom: 0.2rem;
+  }
+  .workout h4 {
+    font-family: 'Bebas Neue', sans-serif; font-weight: 400;
+    font-size: 1.65rem; line-height: 1;
+    text-transform: uppercase; margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+  }
+  .prescription {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem; font-weight: 500;
+    background: var(--bg);
+    padding: 0.85rem 1rem;
+    border-left: 3px solid var(--accent);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  .workout .description { font-size: 0.97rem; max-width: none; margin: 0; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 3rem 0 4rem;
+    color: var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem; text-align: center;
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    section { padding: 2.5rem 0; }
+    header { padding: 2.5rem 0 1.75rem; }
+    .card, .menu-card, .workout { padding: 1.25rem; }
+    .section-head { margin-bottom: 1.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="container">
+    <div class="eyebrow">Daily Dirt · Rider Protocol</div>
+    <h1>Interval<br>Training Guide</h1>
+    <span class="tag">Weekly Structure &amp; Workout Menu</span>
+    <p class="lede">A practical toolkit for riders — pick sessions around Wednesday and Thursday group rides, and around how you're actually feeling.</p>
+  </div>
+</header>
+
+<!-- ============ THE IDEA ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">01 / Philosophy</div>
+      <h2 class="section-title">The Idea</h2>
+    </div>
+    <p>Group sessions on Wednesdays and Thursdays are primarily DH-focused with some riding mixed in. Those two days are your anchor. Everything else in the week should make you stronger for those sessions without showing up cooked.</p>
+    <p>Rather than prescribing a rigid plan, this guide gives you a toolkit. Pick workouts based on how you feel each week. Consistency over time matters far more than any single hard session. If you're fresh, go hard. If you're flat, go easy — or rest. Both are training.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT DH DEMANDS ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">02 / Context</div>
+      <h2 class="section-title">What DH Actually Demands</h2>
+    </div>
+    <p>DH runs are typically 2–5 minutes of all-out effort. Between runs you recover, then repeat. That means the systems we care about most are:</p>
+    <ul>
+      <li><strong>Anaerobic capacity</strong> — the ability to ride hard for 30 seconds to a few minutes and clear the resulting lactate.</li>
+      <li><strong>Neuromuscular power</strong> — short, maximal bursts for starts, pumps, and out-of-corner sprints.</li>
+      <li><strong>VO2 max</strong> — your aerobic ceiling. A bigger engine means faster recovery between runs.</li>
+      <li><strong>Aerobic base</strong> — the foundation under everything. Built with easy miles, not hard ones.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ TYPES OF INTERVALS ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">03 / Toolkit</div>
+      <h2 class="section-title">Types of Intervals</h2>
+    </div>
+    <p>Each card below is one zone: what it is, how to do it, why it matters. RPE is on a 1–10 scale. HR percentages refer to your max heart rate — if you don't know yours, use the highest number you've seen on a hard effort as a working estimate.</p>
+
+    <div class="cards">
+
+      <!-- Endurance -->
+      <div class="card">
+        <div class="card-tag">Zone 02</div>
+        <h3>Endurance</h3>
+        <div class="duration">45 minutes – 2+ hours</div>
+        <dl>
+          <div><dt>How</dt><dd>Easy and conversational BUT steady — try to pedal as much as you can. A really easy long climb or flat terrain works best.</dd></div>
+          <div><dt>Why</dt><dd>The foundation. Zone 2 improves fat oxidation, mitochondrial density, and recovery. Don't skip this. The better your base, the more quality work you can absorb.</dd></div>
+          <div><dt>RPE</dt><dd>3–4/10.</dd></div>
+          <div><dt>HR</dt><dd>65–75% of max heart rate. You should be able to talk, but need to focus a little to keep pedalling.</dd></div>
+        </dl>
+      </div>
+
+      <!-- Tempo -->
+      <div class="card">
+        <div class="card-tag">Zone 03</div>
+        <h3>Tempo</h3>
+        <div class="duration">20–60 minutes</div>
+        <dl>
+          <div><dt>How</dt><dd>Moderately hard, sustained effort. Continuous, no intervals needed.</dd></div>
+          <div><dt>Why</dt><dd>Builds aerobic capacity and fatigue resistance. Low cost, solid return.</dd></div>
+          <div><dt>RPE</dt><dd>5–6/10.</dd></div>
+          <div><dt>HR</dt><dd>75–84% of max heart rate. Similar feel to sweet spot, but at a pace you can hold for 20, 30, 40, 60 minutes — up to 2 hours once you progress.</dd></div>
+        </dl>
+      </div>
+
+      <!-- Sweet Spot -->
+      <div class="card">
+        <div class="card-tag">Zone 04</div>
+        <h3>Sweet Spot</h3>
+        <div class="duration">10–30 minutes</div>
+        <dl>
+          <div><dt>How</dt><dd>Slightly below threshold. Examples: 3 × 15 min with 5 min easy, or 2 × 25 min with 8 min easy.</dd></div>
+          <div><dt>Why</dt><dd>A lot of aerobic benefit for less recovery cost than threshold. Great for busy weeks.</dd></div>
+          <div><dt>RPE</dt><dd>6–7/10. You can speak in short sentences. These require focus, but you should be able to chat once in a while. Great for a super-steady climb up an FSR at a medium pace, then ripping down singletrack with some fatigue in you… repeat for a few hours if you have time. 🙂</dd></div>
+          <div><dt>HR</dt><dd>85–90% of max heart rate, steady breathing, consistent performance across intervals.</dd></div>
+        </dl>
+      </div>
+
+      <!-- VO2 -->
+      <div class="card">
+        <div class="card-tag">Zone 05</div>
+        <h3>VO2 Max</h3>
+        <div class="duration">3–5 minute blocks</div>
+        <dl>
+          <div><dt>How</dt><dd>A series of short intervals in blocks. Unlike the intervals above, you're trying to go as hard as you can each interval WHILE MAINTAINING YOUR FORM. So this should be challenging but very consistent across reps.</dd></div>
+          <div><dt>Why</dt><dd>Raises your aerobic ceiling. A bigger VO2 max means faster recovery between DH runs and more headroom above threshold.</dd></div>
+          <div><dt>RPE</dt><dd>8–9/10. These should require a lot of focus. Heart rate and breathing should build through the session, just like your perceived exertion. The ground you cover should be very close each time, but feel harder and harder.</dd></div>
+          <div><dt>HR</dt><dd>Should be climbing to 90–95% of max heart rate near the middle of each set, and you should be able to hold it there with consistent performance across reps.</dd></div>
+        </dl>
+      </div>
+
+      <!-- Anaerobic -->
+      <div class="card">
+        <div class="card-tag">Zone 06</div>
+        <h3>Anaerobic Capacity</h3>
+        <div class="duration">30 seconds – 2 minutes</div>
+        <dl>
+          <div><dt>How</dt><dd>Hard efforts with equal or double rest. Examples: 10 × 1 min hard / 2 min easy. Or 3 × 1 min hard / 2 min easy, then 5 min easy — repeat 3 times. These should make you fade a little, so NOT perfect pacing — try to start hard and hang on.</dd></div>
+          <div><dt>Why</dt><dd>The most DH-specific interval. It matches the duration and intensity of a race run and teaches your body to handle and clear lactate. Just because it's the most specific doesn't mean do it EVERY SINGLE TIME.</dd></div>
+          <div><dt>RPE</dt><dd>9/10. You're hanging on by the last 15 seconds of each rep. You should feel like you're losing a bit of performance, having to fight for these, and that they get harder every rep — even though you can't go as far.</dd></div>
+          <div><dt>HR</dt><dd>Don't chase a number here — all feel, all hard. HR lags the effort, so by the time it catches up the rep's over.</dd></div>
+        </dl>
+      </div>
+
+      <!-- Neuromuscular -->
+      <div class="card">
+        <div class="card-tag">Zone 07</div>
+        <h3>Neuromuscular Sprints</h3>
+        <div class="duration">6–10 seconds · all out</div>
+        <dl>
+          <div><dt>How</dt><dd>6–10 seconds maximum effort, standing, in a big gear. 3–5 minutes of easy spinning between reps. Do 6–10 reps. Think of these like starting a race out of a gate.</dd></div>
+          <div><dt>Why</dt><dd>Peak power for start gates, accelerations, and punchy terrain. Short enough that heart rate stays moderate.</dd></div>
+          <div><dt>RPE</dt><dd>10/10 each rep. If you can repeat the same power on the last rep as the first, you nailed it. If you don't have power, gauge it by the distance you cover starting from the same spot each time. Mix up traction types across workouts, but keep it consistent within a single session.</dd></div>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAMPLE WEEK ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">04 / Structure</div>
+      <h2 class="section-title">A Sample Week</h2>
+    </div>
+    <p>The group rides are the non-negotiables. Build the rest around them.</p>
+
+    <div class="week">
+      <table>
+        <thead>
+          <tr><th>Day</th><th>Focus</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="day">Mon</td><td>Quality day (rider's choice)</td><td>Pick from the menu based on feel</td></tr>
+          <tr><td class="day">Tue</td><td>Easy endurance or rest</td><td>Legs should feel good for Wednesday</td></tr>
+          <tr class="anchor"><td class="day">Wed</td><td>Group: DH + riding</td><td>Anchor session</td></tr>
+          <tr class="anchor"><td class="day">Thu</td><td>Group: DH + riding</td><td>Anchor session</td></tr>
+          <tr><td class="day">Fri</td><td>Rest or light spin</td><td>Recover from back-to-back group days</td></tr>
+          <tr><td class="day">Sat</td><td>Long ride or quality day</td><td>Long Zone 2 or a second quality session</td></tr>
+          <tr><td class="day">Sun</td><td>Endurance or rest</td><td>Short, easy, or fully off</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note">Two quality interval days per week (Monday and Saturday) is the target. One is fine if the week has been heavy. Three is too many when Wednesday and Thursday are already loaded.</p>
+  </div>
+</section>
+
+<!-- ============ CHOOSE ADVENTURE ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">05 / Menu</div>
+      <h2 class="section-title">Choose Your Own Adventure</h2>
+    </div>
+    <p>Use this menu for your Monday and Saturday sessions. Check in honestly with how you feel before you pick.</p>
+
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <div class="feel">Feeling Strong</div>
+        <div class="feel-quote">"let's go"</div>
+        <ul>
+          <li>Anaerobic: 10 × 1 min hard / 2 min easy</li>
+          <li>VO2: 5 × 3 min hard / 3 min easy</li>
+          <li>Race simulation: 4 × 3 min all-out / 5 min easy — or ride hard DH runs and see how close you can keep the times</li>
+        </ul>
+      </div>
+
+      <div class="menu-card">
+        <div class="feel">Feeling Okay</div>
+        <div class="feel-quote">"steady day"</div>
+        <ul>
+          <li>Sweet spot: 3 × 15 min / 5 min easy</li>
+          <li>Tempo: 2 × 20 min continuous</li>
+        </ul>
+      </div>
+
+      <div class="menu-card">
+        <div class="feel">Feeling Tired</div>
+        <div class="feel-quote">"just move"</div>
+        <ul>
+          <li>Zone 2 ride: 60–90 min easy</li>
+          <li>Openers: 20 min easy + 3 × 30s fast / 90s easy + 5 min cool-down</li>
+          <li>Rest (this is a valid choice, not a failure)</li>
+        </ul>
+      </div>
+
+      <div class="menu-card fried">
+        <div class="feel">Feeling Fried</div>
+        <div class="feel-quote">"shut it down"</div>
+        <p class="sos">Message Luke and Steve right away!</p>
+        <p>Rest. Eat. Sleep. Strength is built during recovery, not during work. A forced hard session on a bad day costs you more than it gives.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">06 / Principles</div>
+      <h2 class="section-title">Carry These Through</h2>
+    </div>
+
+    <div class="principles">
+      <div class="principle">
+        <span class="principle-title">Hard days hard, easy days easy</span>
+        <p>Most riders' biggest mistake is doing everything at medium intensity. That builds fatigue without adaptation.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-title">Warm up properly</span>
+        <p>10–30 minutes of easy spinning with a few short openers before any hard interval. Cold legs don't produce good efforts, and they're easier to injure. The longer you have to warm up, gradually build the pace to an endurance feeling, include the openers, then start. The intervals will always go better.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-title">Log how you feel</span>
+        <p>A one-line note after each ride (legs, sleep, mood) tells you more over a month than any power number.</p>
+      </div>
+      <div class="principle">
+        <span class="principle-title">Progress, then recover</span>
+        <p>Every 3–4 weeks, take a lighter week. Cut interval volume roughly in half. You'll come back stronger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKOUTS ============ -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-num">07 / Sessions</div>
+      <h2 class="section-title">The Workouts</h2>
+    </div>
+    <p>Specific sessions for each zone. Rotate through them alongside the menu above. Warm up properly before every one. All prescriptions are <strong>work / rest</strong> unless noted.</p>
+
+    <!-- Tempo -->
+    <div class="zone-group" style="margin-top: 2.5rem;">
+      <div class="zone-title">
+        <span>Tempo</span>
+        <span class="zone-tag">Zone 03</span>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 01 · Ten-Minute Reps</div>
+        <h4>Build the engine</h4>
+        <div class="prescription">6 × 10 min on / 2 min off — progress to 9 × 10 min on / 2 min off</div>
+        <p class="description">Work at that sustainable tempo effort — moderate, steady, slightly uncomfortable but not straining. Start at 6 reps. Build to 9 reps over several weeks. The 2-minute rest is short on purpose — it keeps the aerobic system primed rather than letting you fully recover.</p>
+      </div>
+    </div>
+
+    <!-- VO2 Max -->
+    <div class="zone-group">
+      <div class="zone-title">
+        <span>VO2 Max</span>
+        <span class="zone-tag">Zone 05</span>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 01 · Classic 30/30s</div>
+        <h4>Our staple VO2 session</h4>
+        <div class="prescription">3 sets of (8 × 30s hard / 30s easy), 5 min easy between sets</div>
+        <p class="description">Each "hard" is as hard as you can go while keeping your form and holding the same pace across all 24 reps. The 30s easy is active recovery — keep the legs spinning, don't coast.</p>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 02 · Descending Pyramid</div>
+        <h4>Three ratios, hardest to easiest</h4>
+        <div class="prescription">8 × 40/20 → 8 × 30/30 → 8 × 20/40, 5 min easy between blocks</div>
+        <p class="description">One block each at three work-to-rest ratios, hardest to easiest. Block 1 (40/20) is the toughest — most work, least rest. Block 2 (30/30) is the middle test. Block 3 (20/40) is where you find out how well you paced the first two.</p>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 03 · Full Pyramid</div>
+        <h4>Descending reps, increasing rest</h4>
+        <div class="prescription">9 × 30/30 → 1 min rest → 8 × 25/35 → 2 min rest → 7 × 20/40 → 3 min rest → 6 × 15/45 — done</div>
+        <p class="description">Fewer reps each block, with shorter hard efforts and longer easy ones — but the rest between blocks gets longer too. On paper each round looks easier than the last; your legs will tell you it isn't. By the final block, those 15-second efforts will feel much harder than they should.</p>
+      </div>
+    </div>
+
+    <!-- Anaerobic -->
+    <div class="zone-group">
+      <div class="zone-title">
+        <span>Anaerobic Capacity</span>
+        <span class="zone-tag">Zone 06</span>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 01 · Attack and Reset</div>
+        <h4>Focus on the final thirty</h4>
+        <div class="prescription">3 sets of (1 min on / 2 min off), 5 min easy between sets</div>
+        <p class="description">Pretend each interval is 30 seconds long and try to survive the last 30. Keep your RPM higher than feels comfortable. Go as hard as you can — when your power starts to drop, shift to an easier gear and attack again.</p>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 02 · Committed Threes</div>
+        <h4>Commit early, then hold the effort</h4>
+        <div class="prescription">7 × 3 min max / 5 min easy between</div>
+        <p class="description">Start really hard for the first 60–90 seconds, then just try to hold on. By the end of each rep you should be working to maintain pace, not push it higher.</p>
+      </div>
+    </div>
+
+    <!-- Neuromuscular -->
+    <div class="zone-group">
+      <div class="zone-title">
+        <span>Neuromuscular Power</span>
+        <span class="zone-tag">Zone 07</span>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 01 · Gate Starts</div>
+        <h4>Bust the cranks off the bike</h4>
+        <div class="prescription">8–10 × 8–10 seconds max / 3–5 min easy spinning between</div>
+        <p class="description">From a near-standstill, standing, in a big gear, on a slight uphill so you don't need to shift mid-rep. Think of trying to bust the cranks off the bike.</p>
+      </div>
+
+      <div class="workout">
+        <div class="workout-num">Workout 02 · Repeat Sprints</div>
+        <h4>Short bursts with a real reset between</h4>
+        <div class="prescription">4 sets of (8 × 5s max / 10s easy roll), 10 min super easy between sets</div>
+        <p class="description">5 seconds of max sprint in a big gear, then 10 seconds of easy rolling in that same gear — don't shift. That's one rep. Do eight in a row for a set. Between sets, 10 minutes super easy: sit down, roll as slow as you can on the bike. The long rest is what keeps the power high for the next set.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">Daily Dirt · Interval Training Guide</div>
+</footer>
+
+
+
+</body></html>
